@@ -1,0 +1,269 @@
+.promotion {
+  padding-bottom: 76px;
+}
+
+.inner {
+  max-width: 375px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.description {
+  @include font-weight("bold");
+  padding-bottom: 20px;
+  text-align: center;
+  font-size: 16px;
+  color: $text-01;
+
+  &__bookmark {
+    @include equal-size(16px);
+    position: relative;
+    top: 2px;
+  }
+}
+
+.intro {
+  padding: 20px 0 64px;
+
+  .inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__title {
+    @include font-weight("bold");
+    font-size: 24px;
+    color: $text-01;
+    line-height: 34px;
+    text-align: center;
+  }
+
+  &__desc {
+    @include font-weight("regular");
+    font-size: 16px;
+    color: $text-02;
+    text-align: center;
+  }
+}
+
+.card-checkbox {
+  position: relative;
+  width: 100%;
+
+  &__input[type="checkbox"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+
+    &:checked + .card-checkbox__label:before {
+      content: "";
+      background-color: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    &:checked + .card-checkbox__label:after {
+      content: "";
+      background-image: url("#{$img-path}/card-selected.png");
+      background-repeat: no-repeat;
+      background-size: contain;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60%;
+      height: 60%;
+    }
+  }
+
+  &__label {
+    overflow: hidden;
+    z-index: z("float");
+    display: block;
+    position: relative;
+    width: 100%;
+    border-radius: $default-border-radius;
+    cursor: pointer;
+
+    img {
+      @include img-default;
+    }
+  }
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px 13.5px;
+  padding-bottom: 64px;
+
+  .card-checkbox {
+    margin-bottom: 6px;
+  }
+
+  &__item {
+    width: calc(50% - 9px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title {
+    @include ellipsis();
+    @include font-weight("bold");
+    font-size: 16px;
+    color: $text-01;
+    line-height: 24px;
+  }
+
+  &__desc {
+    @include ellipsis();
+    @include font-weight("regular");
+    font-size: 12px;
+    color: $text-02;
+    line-height: 18px;
+  }
+}
+
+.choice {
+  display: flex;
+  flex-direction: row-reverse;
+
+  &__item {
+    @include equal-size(34px);
+    overflow: hidden;
+    position: relative;
+    border-radius: 50%;
+
+    &:nth-child(1) {
+      z-index: z("float") + z("float");
+    }
+
+    &:nth-child(2) {
+      z-index: z("float");
+    }
+
+    &:nth-child(3) {
+      z-index: 0;
+    }
+
+    &:not(:last-child) {
+      margin-left: -6px;
+    }
+
+    &:before {
+      content: "";
+      background-image: url("#{$img-path}/unknown.png");
+      background-repeat: no-repeat;
+      background-size: contain;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &__img {
+    @include img-default;
+    z-index: z("float");
+    position: relative;
+  }
+
+  &__number {
+    @include font-weight("bold");
+    z-index: z("float") + z("float");
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("#{$img-path}/mask.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    font-size: 12px;
+    color: $ui-01;
+  }
+}
+
+.floating {
+  z-index: z("layer");
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 76px;
+  display: flex;
+  justify-content: center;
+  background-color: $ui-01;
+
+  &::before {
+    content: "";
+    height: 34px;
+    width: 100%;
+    position: absolute;
+    top: -34px;
+    background: linear-gradient(180deg, $ui-04 0%, $ui-01 100%);
+  }
+
+  &__button {
+    @include button-normalize;
+    width: 100%;
+    max-width: 345px;
+    height: 60px;
+    gap: 8px;
+    background-color: $primary;
+    border-radius: $default-border-radius;
+    cursor: pointer;
+
+    &--disabled {
+      background-color: $primary-disabled;
+      cursor: not-allowed;
+
+      .floating__title {
+        color: $text-03;
+      }
+    }
+  }
+
+  &__title {
+    @include font-weight("bold");
+    font-size: 18px;
+    color: $text-01;
+  }
+
+  &--active {
+    .floating {
+      &__link {
+        background-color: $primary;
+      }
+
+      &__title {
+        color: $text-01;
+      }
+    }
+  }
+}
+
+@include respond-to("breakpoint-xxs") {
+  .floating {
+    &__button {
+      max-width: 280px;
+    }
+  }
+}

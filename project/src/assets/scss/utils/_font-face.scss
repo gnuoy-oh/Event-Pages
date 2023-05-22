@@ -1,0 +1,35 @@
+@font-face {
+  font-family: "AppleSDGothicNeo";
+  font-style: normal;
+  font-weight: 300;
+  src: local("AppleSDGothicNeoL"),
+    url("#{$font-path}/AppleSDGothicNeoL.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AppleSDGothicNeo";
+  font-style: normal;
+  font-weight: 400;
+  src: local("AppleSDGothicNeoR"),
+    url("#{$font-path}/AppleSDGothicNeoR.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AppleSDGothicNeo";
+  font-style: normal;
+  font-weight: 500;
+  src: local("AppleSDGothicNeoSB"),
+    url("#{$font-path}/AppleSDGothicNeoSB.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AppleSDGothicNeo";
+  font-style: normal;
+  font-weight: 600;
+  src: local("AppleSDGothicNeoB"),
+    url("#{$font-path}/AppleSDGothicNeoB.ttf") format("truetype");
+  font-display: swap;
+}

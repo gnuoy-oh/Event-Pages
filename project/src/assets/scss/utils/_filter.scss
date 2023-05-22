@@ -1,0 +1,13 @@
+$filter-contents: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.1));
+
+$filter-shadows: (
+  base: none,
+  contents: $filter-contents
+);
+
+// Usage: `@include filter-shadow('contents');`
+@mixin filter-shadow($filter) {
+  @if map-has-key($filter-shadows, $filter) {
+    filter: #{map-get($filter-shadows, $filter)};
+  }
+}
